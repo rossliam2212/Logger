@@ -18,9 +18,8 @@ namespace logger {
 
     public:
         Logger();
-        Logger(const std::string& outputFileName);
+        explicit Logger(const std::string& outputFileName);
 
-        // TODO add ability to pass const char* as well as strings
         void start(const std::string& message);
         void end(const std::string& message);
 

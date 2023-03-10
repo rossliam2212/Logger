@@ -16,41 +16,34 @@ namespace logger {
     }
 
     void Logger::start(const std::string& message) {
-        Record r{message, logger::start};
-        log(r);
+        log({message, logger::start});
     }
 
     void Logger::end(const std::string& message) {
-        Record r{message, logger::end};
-        log(r);
+        log({message, logger::end});
     }
 
     void Logger::info(const std::string& message) {
-        Record r{message, logger::info};
-        log(r);
+        log({message, logger::info});
     }
 
     void Logger::debug(const std::string& message) {
-        Record r{message, logger::debug};
-        log(r);
+        log({message, logger::debug});
     }
 
     void Logger::warning(const std::string& message) {
-        Record r{message, logger::warning};
-        log(r);
+        log({message, logger::warning});
     }
 
     void Logger::error(const std::string& message) {
-        Record r{message, logger::error};
-        log(r);
+        log({message, logger::error});
     }
 
     void Logger::fatal(const std::string& message) {
-        Record r{message, logger::fatal};
-        log(r);
+        log({message, logger::fatal});
     }
 
-    void Logger::log(const logger::Record& record) {
+    void Logger::log(const Record& record) {
         if (outputLogsToFile)
             out.output(record);
 

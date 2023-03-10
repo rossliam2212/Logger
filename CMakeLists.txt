@@ -4,7 +4,6 @@ project(logger)
 set(CMAKE_CXX_STANDARD 17)
 
 set(SOURCE_FILES
-        src/main.cpp
         src/Record.cpp
         src/Record.h
         src/Time.cpp
@@ -16,4 +15,16 @@ set(SOURCE_FILES
         src/Formatter.cpp
         src/Formatter.h)
 
-add_executable(logger ${SOURCE_FILES})
+add_executable(logger src/main.cpp ${SOURCE_FILES})
+
+# Catch2 Testing Framework
+find_package(Catch2 3 REQUIRED)
+set(TEST_FILES test/RecordTest.cpp
+               test/FormatterTest.cpp
+               test/OutputterTest.cpp)
+
+set(FILES_TO_TEST ${SOURCE_FILES})
+
+add_executable(tests ${TEST_FILES} ${FILES_TO_TEST})
+target_link_libraries(tests PRIVATE Catch2::Catch2WithMain)
+

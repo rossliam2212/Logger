@@ -20,16 +20,20 @@ namespace logger {
         static constexpr const char* OUTPUT_DIR{"../logs/"};
 
     private:
-        std::string outputFile;
+        std::string outputFileName;
+        std::string outputFilePath;
 
     public:
         explicit Outputter(const std::string& fileName);
         void output(const Record& record);
 
+        std::string getOutputFileName() const;
+        std::string getOutputFilePath() const;
+
     private:
-        void init(const std::string& fileName);
+        void init();
         static bool setUpDirectory();
-        bool setUpFile(const std::string& fileName);
+        bool setUpFile();
     };
 }
 

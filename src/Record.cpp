@@ -5,13 +5,13 @@
 #include "Record.h"
 
 namespace logger {
-    Record::Record(const std::string& message, logger::Severity severity)
+    Record::Record(const std::string& message, Severity severity)
         : message{message},
           severity{severity},
           t{} {
     }
 
-    std::string Record::severityText(logger::Severity s) {
+    std::string Record::getSeverityText(Severity s) {
         switch (s) {
             case start:
                 return "START";
@@ -30,10 +30,11 @@ namespace logger {
         }
     }
 
-    std::string Record::getColor(logger::Severity s) {
+    std::string Record::getColor(Severity s) {
         switch (s) {
             case start:
             case end:
+                return green;
             case info:
                 return white;
             case debug:

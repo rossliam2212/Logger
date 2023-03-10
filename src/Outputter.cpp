@@ -6,16 +6,21 @@
 #include <iostream>
 
 namespace logger {
-    Outputter::Outputter(const std::string& fileName) {
-        init(fileName);
+    Outputter::Outputter(const std::string& fileName)
+        : outputFileName{fileName} {
+        init();
     }
 
-    void Outputter::init(const std::string& fileName) {
-        if (!setUpDirectory())
+    void Outputter::init() {
+        if (!setUpDirectory()) {
+            std::cerr << "Error setting up '" << OUTPUT_DIR << "' directory.";
             exit(-1);
+        }
 
-        if (!setUpFile(fileName))
+        if (!setUpFile()) {
+            std::cerr << "Error setting up '" << outputFileName << "' file.";
             exit(-1);
+        }
     }
 
     bool Outputter::setUpDirectory() {
@@ -28,12 +33,14 @@ namespace logger {
         return true;
     }
 
-    bool Outputter::setUpFile(const std::string& fileName) {
-        std::ostringstream ss;
-        ss << OUTPUT_DIR << fileName << ".txt";
-        outputFile = ss.str();
+    bool Outputter::setUpFile() {
+        outputFileName += ".txt";
 
-        std::ofstream out{outputFile};
+        std::ostringstream ss;
+        ss << OUTPUT_DIR << outputFileName;
+        outputFilePath = ss.str();
+
+        std::ofstream out{outputFilePath};
 
         if (!out)
             return false;
@@ -43,8 +50,16 @@ namespace logger {
     }
 
     void Outputter::output(const Record& record) {
-        std::ofstream out{outputFile, std::ios::app};
+        std::ofstream out{outputFilePath, std::ios::app};
         out << Formatter::formatFile(record) << "\n";
         out.close();
+    }
+
+    std::string Outputter::getOutputFileName() const {
+        return outputFileName;
+    }
+
+    std::string Outputter::getOutputFilePath() const {
+        return outputFilePath;
     }
 }

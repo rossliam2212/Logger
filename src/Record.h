@@ -13,6 +13,7 @@
 #include "Formatter.h"
 
 #define white "\x1B[97m"
+#define green "\x1B[32m"
 #define blue "\x1B[36m"
 #define orange "\x1B[34m"
 #define red "\x1B[31m"
@@ -43,7 +44,7 @@ namespace logger {
     public:
         Record(const std::string& message, Severity severity);
 
-        static std::string severityText(Severity s) ;
+        static std::string getSeverityText(Severity s) ;
         static std::string getColor(Severity s) ;
 
         Time getTime() const;

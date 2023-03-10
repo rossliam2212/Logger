@@ -11,7 +11,7 @@ int main() {
     
     l.start("Start Message");
     l.info("Info Message");
-    l.debug{("Debug Message");
+    l.debug("Debug Message");
     l.warning("Warning Message");
     l.error("Error Message");
     l.fatal("Fatal Message");
