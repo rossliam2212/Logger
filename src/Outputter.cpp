@@ -17,6 +17,7 @@ namespace logger {
         if (!setUpFile(fileName))
             exit(-1);
     }
+
     bool Outputter::setUpDirectory() {
         if (!fs::create_directories(OUTPUT_DIR)) {
             if (fs::exists(OUTPUT_DIR)) {
@@ -43,7 +44,7 @@ namespace logger {
 
     void Outputter::output(const Record& record) {
         std::ofstream out{outputFile, std::ios::app};
-        out << Record::formatFile(record) << "\n";
+        out << Formatter::formatFile(record) << "\n";
         out.close();
     }
 }

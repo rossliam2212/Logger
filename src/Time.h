@@ -12,7 +12,6 @@
 namespace logger {
     class Time {
     public:
-        Time() = default;
         std::string getDateAndTime() const;
     };
 }

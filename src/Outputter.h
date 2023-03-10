@@ -10,6 +10,7 @@
 #include <filesystem>
 #include <sstream>
 #include "Record.h"
+#include "Formatter.h"
 
 namespace logger {
     namespace fs = std::filesystem;
@@ -22,12 +23,12 @@ namespace logger {
         std::string outputFile;
 
     public:
-        Outputter(const std::string& fileName);
+        explicit Outputter(const std::string& fileName);
         void output(const Record& record);
 
     private:
         void init(const std::string& fileName);
-        bool setUpDirectory();
+        static bool setUpDirectory();
         bool setUpFile(const std::string& fileName);
     };
 }

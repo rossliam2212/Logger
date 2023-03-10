@@ -5,38 +5,55 @@
 #include "Logger.h"
 
 namespace logger {
-    Logger::Logger(const std::string& outputFileName)
-        : out{outputFileName} {
+    Logger::Logger()
+        : out{"NOT-USED"},
+          outputLogsToFile{false} {
+    }
 
+    Logger::Logger(const std::string& outputFileName)
+        : out{outputFileName},
+          outputLogsToFile{true} {
+    }
+
+    void Logger::start(const std::string& message) {
+        Record r{message, logger::start};
+        log(r);
+    }
+
+    void Logger::end(const std::string& message) {
+        Record r{message, logger::end};
+        log(r);
     }
 
     void Logger::info(const std::string& message) {
         Record r{message, logger::info};
-        out.output(r);
-        std::cout << r << "\n";
+        log(r);
     }
 
     void Logger::debug(const std::string& message) {
         Record r{message, logger::debug};
-        out.output(r);
-        std::cout << r << "\n";
+        log(r);
     }
 
     void Logger::warning(const std::string& message) {
         Record r{message, logger::warning};
-        out.output(r);
-        std::cout << r << "\n";
+        log(r);
     }
 
     void Logger::error(const std::string& message) {
         Record r{message, logger::error};
-        out.output(r);
-        std::cout << r << "\n";
+        log(r);
     }
 
     void Logger::fatal(const std::string& message) {
         Record r{message, logger::fatal};
-        out.output(r);
-        std::cout << r << "\n";
+        log(r);
+    }
+
+    void Logger::log(const logger::Record& record) {
+        if (outputLogsToFile)
+            out.output(record);
+
+        std::cout << record << "\n";
     }
 }

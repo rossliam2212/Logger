@@ -12,6 +12,8 @@ set(SOURCE_FILES
         src/Logger.cpp
         src/Logger.h
         src/Outputter.cpp
-        src/Outputter.h)
+        src/Outputter.h
+        src/Formatter.cpp
+        src/Formatter.h)
 
 add_executable(logger ${SOURCE_FILES})

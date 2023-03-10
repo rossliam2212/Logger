@@ -13,6 +13,10 @@ namespace logger {
 
     std::string Record::severityText(logger::Severity s) {
         switch (s) {
+            case start:
+                return "START";
+            case end:
+                return "END";
             case info:
                 return "INFO";
             case debug:
@@ -28,6 +32,8 @@ namespace logger {
 
     std::string Record::getColor(logger::Severity s) {
         switch (s) {
+            case start:
+            case end:
             case info:
                 return white;
             case debug:
@@ -41,37 +47,14 @@ namespace logger {
         }
     }
 
-    std::string Record::formatConsole(const Record& record) {
-        const std::size_t maxSeverityTextLength{6};
-        auto resetColor{record.getColor(record.getSeverity())};
-
-        std::ostringstream ss;
-        ss << record.getColor(record.getSeverity());
-        ss << record.t.getDateAndTime() << "  ";
-        ss << std::setw(maxSeverityTextLength) << std::left << record.severityText(record.getSeverity());
-        ss << " []  " << record.getMessage();
-        ss << resetColor;
-
-        return ss.str();
-    }
-
-    std::string Record::formatFile(const logger::Record& record) {
-        const std::size_t maxSeverityTextLength{6};
-
-        std::ostringstream ss;
-        ss << record.t.getDateAndTime() << "  ";
-        ss << std::setw(maxSeverityTextLength) << std::left << record.severityText(record.getSeverity());
-        ss << " []  " << record.getMessage();
-        return ss.str();
-    }
-
     Time Record::getTime() const { return t; }
+
     std::string Record::getMessage() const { return message; }
+
     Severity Record::getSeverity() const { return severity; }
 
-
     std::ostream& operator<<(std::ostream& os, const Record& record) {
-        os << record.formatConsole(record);
+        os << Formatter::formatConsole(record);
         return os;
     }
 }
