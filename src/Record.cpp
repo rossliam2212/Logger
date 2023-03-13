@@ -31,28 +31,20 @@ namespace logger {
     }
 
     std::string Record::getColor(Severity s) {
-        auto t = Color::getRecordColors();
         switch (s) {
             case start:
             case end:
-//                return Color::getRecordColors()
                 return Color::getRecordColors()[Severity::start];
-//                return green;
             case info:
                 return Color::getRecordColors()[Severity::info];
-//                return white;
             case debug:
                 return Color::getRecordColors()[Severity::debug];
-//                return blue;
             case warning:
                 return Color::getRecordColors()[Severity::warning];
-//                return orange;
             case error:
                 return Color::getRecordColors()[Severity::error];
-//                return red;
             case fatal:
                 return Color::getRecordColors()[Severity::fatal];
-//                return redBG;
         }
     }
 
