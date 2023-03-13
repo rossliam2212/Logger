@@ -1,0 +1,8 @@
+13/03/23  16:56:32  START  []  Start Message
+13/03/23  16:56:32  INFO   []  Info Message
+13/03/23  16:56:32  DEBUG  []  Debug Message
+13/03/23  16:56:32  WARN   []  Warning Message
+13/03/23  16:56:32  ERROR  []  Error Message
+13/03/23  16:56:32  FATAL  []  Fatal Message
+13/03/23  16:56:32  END    []  End Message
+13/03/23  16:56:32  FATAL  []  NEW FATAL MESSAGE

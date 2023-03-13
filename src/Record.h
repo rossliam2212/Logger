@@ -11,19 +11,21 @@
 #include <typeinfo>
 #include "Time.h"
 #include "Formatter.h"
+#include "Color.h"
 
-#define white "\x1B[97m"
-#define green "\x1B[32m"
-#define blue "\x1B[36m"
-#define orange "\x1B[34m"
-#define red "\x1B[31m"
-#define redBG "\x1B[101m"
-#define reset "\x1B[0m"
+//#define white "\x1B[97m"
+//#define green "\x1B[32m"
+//#define blue "\x1B[36m"
+//#define orange "\x1B[34m"
+//#define red "\x1B[31m"
+//#define redBG "\x1B[101m"
+//#define reset "\x1B[0m"
 
 namespace logger {
     class Formatter;
+//    class Color;
 
-    enum Severity {
+    enum Severity : unsigned short {
         start,
         end,
         info,

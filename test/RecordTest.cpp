@@ -55,11 +55,13 @@ TEST_CASE("Record::getSeverityText(Severity s)") {
 
 
 TEST_CASE("Record::getColor(Severity s)") {
-    REQUIRE(logger::Record::getColor(logger::start) == green);
-    REQUIRE(logger::Record::getColor(logger::end) == green);
-    REQUIRE(logger::Record::getColor(logger::info) == white);
-    REQUIRE(logger::Record::getColor(logger::debug) == blue);
-    REQUIRE(logger::Record::getColor(logger::warning) == orange);
-    REQUIRE(logger::Record::getColor(logger::error) == red);
-    REQUIRE(logger::Record::getColor(logger::fatal) == redBG);
+    logger::Color::init();
+
+    REQUIRE(logger::Record::getColor(logger::start) == logger::Color::getColors()[logger::RecordColor::green]);
+    REQUIRE(logger::Record::getColor(logger::end) == logger::Color::getColors()[logger::RecordColor::green]);
+    REQUIRE(logger::Record::getColor(logger::info) == logger::Color::getColors()[logger::RecordColor::white]);
+    REQUIRE(logger::Record::getColor(logger::debug) == logger::Color::getColors()[logger::RecordColor::blue]);
+    REQUIRE(logger::Record::getColor(logger::warning) == logger::Color::getColors()[logger::RecordColor::yellow]);
+    REQUIRE(logger::Record::getColor(logger::error) == logger::Color::getColors()[logger::RecordColor::red]);
+    REQUIRE(logger::Record::getColor(logger::fatal) == logger::Color::getColors()[logger::RecordColor::redBG]);
 }

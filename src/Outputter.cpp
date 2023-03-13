@@ -4,10 +4,11 @@
 
 #include "Outputter.h"
 #include <iostream>
+#include <utility>
 
 namespace logger {
-    Outputter::Outputter(const std::string& fileName)
-        : outputFileName{fileName} {
+    Outputter::Outputter(std::string  fileName)
+        : outputFileName{std::move(fileName)} {
         init();
     }
 

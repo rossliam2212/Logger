@@ -13,7 +13,9 @@ set(SOURCE_FILES
         src/Outputter.cpp
         src/Outputter.h
         src/Formatter.cpp
-        src/Formatter.h)
+        src/Formatter.h
+        src/Color.cpp
+        src/Color.h)
 
 add_executable(logger src/main.cpp ${SOURCE_FILES})
 

@@ -8,11 +8,13 @@ namespace logger {
     Logger::Logger()
         : out{"NOT-USED"},
           outputLogsToFile{false} {
+        Color::init();
     }
 
     Logger::Logger(const std::string& outputFileName)
         : out{outputFileName},
           outputLogsToFile{true} {
+        Color::init();
     }
 
     void Logger::start(const std::string& message) {
@@ -48,5 +50,9 @@ namespace logger {
             out.output(record);
 
         std::cout << record << "\n";
+    }
+
+    void Logger::changeRecordColor(Severity severity, RecordColor color) {
+        Color::changeRecordColor(severity, color);
     }
 }

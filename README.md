@@ -16,7 +16,7 @@ enum Severity {
     end,        // Outputted in green
     info,       // Outputted in white      
     debug,      // Outputted in blue
-    warning,    // Outputted in orange
+    warning,    // Outputted in yellow
     error,      // Outputted in red
     fatal       // Outputted in white with a red background
 };
@@ -57,3 +57,36 @@ int main() {
 ### In Console:
 <img width="378" alt="Screenshot 2023-03-10 at 16 31 02" src="https://user-images.githubusercontent.com/73957889/224370649-81f03711-e88f-4437-9622-97ffa3f40c19.png">
 
+### Changing Log Colors:
+Default Colors:
+```
+START   - Green
+END     - Green
+INFO    - White
+DEBUG   - Blue
+WARN    - Yellow
+ERROR   - Red
+FATAL   - White w/ Red Background
+```
+
+Color Options:
+```
+White
+Green
+Blue
+Red
+Magenta
+Yellow
+Cyan
+Green Background
+Blue Background
+Red Background
+Magenta Background
+Yellow Background
+Cyan Background
+```
+
+Log colors can be changed:
+```c++
+logger::Logger::changeRecordColor(logger::Severity severity, logger::RecordColor color);
+```

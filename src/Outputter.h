@@ -24,7 +24,7 @@ namespace logger {
         std::string outputFilePath;
 
     public:
-        explicit Outputter(const std::string& fileName);
+        explicit Outputter(std::string  fileName);
         void output(const Record& record);
 
         std::string getOutputFileName() const;

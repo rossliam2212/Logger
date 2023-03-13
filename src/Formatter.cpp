@@ -6,12 +6,14 @@
 
 namespace logger {
     std::string Formatter::formatConsole(const Record& record) {
+//        auto s = Color::getColors()[RecordColor::white];
         std::ostringstream ss;
         ss << Record::getColor(record.getSeverity());
         ss << record.getTime().getDateAndTime() << "  ";
         ss << std::setw(MAX_SEVERITY_TEXT_LENGTH) << std::left << Record::getSeverityText(record.getSeverity());
         ss << " []  " << record.getMessage();
-        ss << white << reset;
+        ss << Color::getColors()[RecordColor::white];
+        ss << Color::getColors()[RecordColor::reset];
 
         return ss.str();
     }

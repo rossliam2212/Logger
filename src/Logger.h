@@ -9,12 +9,15 @@
 #include <string>
 #include "Outputter.h"
 #include "Record.h"
+#include "Color.h"
 
 namespace logger {
     class Logger {
     private:
         Outputter out;
         bool outputLogsToFile;
+
+        std::map<Severity, std::string> colors;
 
     public:
         Logger();
@@ -28,6 +31,8 @@ namespace logger {
         void warning(const std::string& message);
         void error(const std::string& message);
         void fatal(const std::string& message);
+
+        static void changeRecordColor(Severity severity, RecordColor color);
 
     private:
         void log(const Record& record);
