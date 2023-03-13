@@ -55,9 +55,14 @@ int main() {
 ```
 
 ### In Console:
-<img width="378" alt="Screenshot 2023-03-10 at 16 31 02" src="https://user-images.githubusercontent.com/73957889/224370649-81f03711-e88f-4437-9622-97ffa3f40c19.png">
+<img width="338" alt="Screenshot 2023-03-13 at 16 59 31" src="https://user-images.githubusercontent.com/73957889/224772647-d9c9fa87-74c3-4176-8d54-576edfcc57fb.png">
 
 ### Changing Log Colors:
+Log colors can be changed:
+```c++
+logger::Logger::changeRecordColor(logger::Severity severity, logger::RecordColor color);
+```
+
 Default Colors:
 ```
 START   - Green
@@ -84,9 +89,4 @@ Red Background
 Magenta Background
 Yellow Background
 Cyan Background
-```
-
-Log colors can be changed:
-```c++
-logger::Logger::changeRecordColor(logger::Severity severity, logger::RecordColor color);
 ```
